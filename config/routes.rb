@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-
-  get 'welcome/about'
+  resources :polishes
+  get 'about' => 'welcome#about'
   root 'welcome#index'
 end
