@@ -35,3 +35,5 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 gem 'faker'
+gem 'devise'
+gem 'figaro'
