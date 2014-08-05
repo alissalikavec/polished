@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805015249) do
+ActiveRecord::Schema.define(version: 20140805022744) do
 
   create_table "polishes", force: true do |t|
     t.string   "color"
@@ -20,7 +20,10 @@ ActiveRecord::Schema.define(version: 20140805015249) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "polishes", ["user_id"], name: "index_polishes_on_user_id"
 
   create_table "reviews", force: true do |t|
     t.string   "title"

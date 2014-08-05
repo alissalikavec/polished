@@ -12,7 +12,7 @@ class PolishesController < ApplicationController
   end
 
   def create
-    @polish = Polish.new(params.require(:polish).permit(:brand, :name, :color, :style))
+    @polish = current_user.polishes.build(params.require(:polish).permit(:brand, :name, :color, :style))
     if @polish.save
       flash[:notice] = "Polish saved!"
       redirect_to @polish
