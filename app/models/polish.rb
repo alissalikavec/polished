@@ -3,4 +3,10 @@ class Polish < ActiveRecord::Base
 	belongs_to :user
 
 	default_scope {order('created_at DESC')}
+
+	validates :brand, length: { minimum: 3 }, presence: true
+	validates :name, length: { minimum: 5 }, presence: true
+	validates :color, presence: true
+	validates :style, presence: true
+	validates :user, presence: true
 end

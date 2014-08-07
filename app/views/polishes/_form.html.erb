@@ -1,0 +1,36 @@
+<%= form_for @polish do |f| %>
+  <% if polish.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>There are <%= pluralize(polish.errors.count, "error") %>.</h4>
+      <ul>
+        <% polish.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_group_tag(polish.errors[:brand]) do %>
+	<%= f.label :brand %>
+	<%= f.text_field :brand %>
+  <% end %>
+  <%= form_group_tag(polish.errors[:name]) do %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+  <% end %>
+  <%= form_group_tag(polish.errors[:color]) do %>
+	<%= f.label :color %>
+	<%= f.text_field :color %>
+  <% end %>
+  <%= form_group_tag(polish.errors[:style]) do %>
+	<%= f.label :style %>
+	<%= f.select :style, [
+		['Normal', 'Normal'], 
+		['Matte', 'Matte'], 
+		['Glitter', 'Glitter'], 
+		['Metallic', 'Metallic'], 
+		['Gel', 'Gel']] %>
+  <% end %>
+  <div class="form-group">
+	<%= f.submit "Save Polish!" %>
+  </div>
+<% end %>

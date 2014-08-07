@@ -4,31 +4,6 @@
 		What should I put here?
 	</div>
 	<div class="col-md-8">
-	<%= form_for @polish do |f| %>
-	<div class="form-group">
-	<%= f.label :brand %>
-	<%= f.text_field :brand %>
-	</div>
-	<div class="form-group">
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	</div>
-	<div class="form-group">
-	<%= f.label :color %>
-	<%= f.text_field :color %>
-	</div>
-	<div class="form-group">
-	<%= f.label :style %>
-	<%= f.select :style, [
-		['Normal', 'Normal'], 
-		['Matte', 'Matte'], 
-		['Glitter', 'Glitter'], 
-		['Metallic', 'Metallic'], 
-		['Gel', 'Gel']] %>
-	</div>
-	<div class="form-group">
-	<%= f.submit "Save Polish" %>
-	</div>
-	<% end %>
+		<%= render partial: 'form', locals: { polish: @polish } %>
 	</div>
 </div>

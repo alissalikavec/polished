@@ -14,7 +14,7 @@ class PolishesController < ApplicationController
   end
 
   def create
-    @polish = current_user.polishes.build(params.require(:polish).permit(:brand, :name, :color, :style))
+    @polish = current_user.polishes.build(polish_params)
     authorize @polish
     if @polish.save
       flash[:notice] = "Polish saved!"
@@ -36,12 +36,17 @@ class PolishesController < ApplicationController
   def update
     @polish = Polish.find(params[:id])
     authorize @polish
-    if @polish.update_attributes(params.require(:polish).permit(:brand, :name, :color, :style))
+    if @polish.update_attributes(polish_params)
       flash[:notice] = "Polish details updated."
       redirect_to @polish
     else
       flash[:error] = "There was an error saving this polish. Please try again!"
       render :edit
     end
+  end
+
+  private
+  def polish_params
+    params.require(:polish).permit(:brand, :name, :color, :style)
   end
 end
