@@ -1,4 +1,8 @@
 <h1>All Polishes</h1>
+<% if policy(Polish.new).create? %>
+<%= link_to "New Polish", new_polish_path, class: 'btn btn-success' %>
+<% end %>
+
 <% @polishes.each do |polish| %>
 <div class="media">
 	<div class="media-body">

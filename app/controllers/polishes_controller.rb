@@ -1,6 +1,7 @@
 class PolishesController < ApplicationController
   def index
   	@polishes = Polish.all
+    authorize @polishes
   end
 
   def show
@@ -9,10 +10,12 @@ class PolishesController < ApplicationController
 
   def new
     @polish = Polish.new
+    authorize @polish
   end
 
   def create
     @polish = current_user.polishes.build(params.require(:polish).permit(:brand, :name, :color, :style))
+    authorize @polish
     if @polish.save
       flash[:notice] = "Polish saved!"
       redirect_to @polish
@@ -27,10 +30,12 @@ class PolishesController < ApplicationController
 
   def edit
     @polish = Polish.find(params[:id])
+    authorize @polish
   end
 
   def update
     @polish = Polish.find(params[:id])
+    authorize @polish
     if @polish.update_attributes(params.require(:polish).permit(:brand, :name, :color, :style))
       flash[:notice] = "Polish details updated."
       redirect_to @polish

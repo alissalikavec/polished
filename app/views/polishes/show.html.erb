@@ -1,5 +1,7 @@
 <h1>Polish details</h1>
-<%= link_to "Edit Polish", edit_polish_path(@polish) %>
+<% if policy(@polish).edit? %>
+<%= link_to "Edit Polish", edit_polish_path(@polish), class: 'btn btn-success' %>
+<% end %>
 <p><%= @polish.brand%> - <%= @polish.name %></p>
 <p>Color: <%= @polish.color %></p>
 <p>Style: <%= @polish.style %> </p>
