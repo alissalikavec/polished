@@ -6,6 +6,8 @@ class PolishesController < ApplicationController
 
   def show
   	@polish = Polish.find(params[:id])
+    @reviews = @polish.reviews
+    @review = Review.new
   end
 
   def new

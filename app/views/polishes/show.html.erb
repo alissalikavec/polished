@@ -5,3 +5,6 @@
 <p><%= @polish.brand%> - <%= @polish.name %></p>
 <p>Color: <%= @polish.color %></p>
 <p>Style: <%= @polish.style %> </p>
+
+<h3>Polish Reviews</h3>
+<%= render partial: 'reviews/review', collection: @reviews %>

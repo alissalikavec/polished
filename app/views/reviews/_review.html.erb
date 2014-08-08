@@ -1,0 +1,6 @@
+<%= content_tag :div, class: 'media', id: "review-#{review.id}" do %>
+	<div class="media-body">
+		<p><%= review.title %> <em> Written by <%= review.user.name %></em></p>
+		<p><%= review.body %></p>
+	</div>
+	<% end %>

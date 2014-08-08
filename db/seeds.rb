@@ -25,14 +25,17 @@ users = User.all
 end
 polishes = Polish.all
 
-# Create Reviews
-100.times do
-	Review.create(
-		polish: polishes.sample,
-		title: Faker::Lorem.sentence,
-		body: Faker::Lorem.paragraph
-	)
-end
+# Create reviews
+
+ 100.times do
+ 	Review.create(
+ 		user: users.sample,
+ 		polish: polishes.sample,
+ 		title: Faker::Lorem.sentence,
+ 		body: Faker::Lorem.paragraph
+ 		)
+ end
+
 # Create an admin user
  admin = User.new(
    name:     'Admin User',
@@ -42,7 +45,8 @@ end
  )
  admin.skip_confirmation!
  admin.save
- 
+
+
  # Create a moderator
  moderator = User.new(
    name:     'Moderator User',
