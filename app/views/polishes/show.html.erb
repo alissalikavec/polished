@@ -2,6 +2,9 @@
 <% if policy(@polish).edit? %>
 <%= link_to "Edit Polish", edit_polish_path(@polish), class: 'btn btn-success' %>
 <% end %>
+<% if policy(@polish).destroy? %>
+<%= link_to "Delete Polish", @polish, method: :delete, class: 'btn btn-danger', data: {  confirm: 'Are you sure you want to delete this polish? '} %>
+<%end%>
 <p><%= @polish.brand%> - <%= @polish.name %></p>
 <p>Color: <%= @polish.color %></p>
 <p>Style: <%= @polish.style %> </p>

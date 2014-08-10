@@ -28,6 +28,17 @@ class PolishesController < ApplicationController
   end
 
   def destroy
+    @polish = Polish.find(params[:id])
+    name = @polish.name
+
+    authorize @polish
+    if @polish.destroy
+      flash[:notice] = "\"#{name}\" was deleted successfully."
+      redirect_to polishes_path
+    else
+      flash[:error] = "There was an error deleting the topic."
+      render :show
+    end
   end
 
   def edit
