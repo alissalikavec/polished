@@ -18,3 +18,5 @@
 <%= link_to "Add a Review", new_polish_review_path(@polish), class: 'btn btn-success' %>
 <% end %>
 <%= render partial: 'favorites/favorite', locals: { polish: @polish } %>
+<%= render partial: 'owns/own', locals: { polish: @polish } %>
+<%= render partial: 'wants/want', locals: { polish: @polish } %>

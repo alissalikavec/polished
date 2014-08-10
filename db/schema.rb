@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810014734) do
+ActiveRecord::Schema.define(version: 20140810030306) do
 
   create_table "favorites", force: true do |t|
     t.integer  "polish_id"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20140810014734) do
 
   add_index "favorites", ["polish_id"], name: "index_favorites_on_polish_id"
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
+  create_table "owns", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "polish_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "owns", ["polish_id"], name: "index_owns_on_polish_id"
+  add_index "owns", ["user_id"], name: "index_owns_on_user_id"
 
   create_table "polishes", force: true do |t|
     t.string   "color"
@@ -71,5 +81,15 @@ ActiveRecord::Schema.define(version: 20140810014734) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "wants", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "polish_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wants", ["polish_id"], name: "index_wants_on_polish_id"
+  add_index "wants", ["user_id"], name: "index_wants_on_user_id"
 
 end
