@@ -8,6 +8,9 @@ class PolishesController < ApplicationController
   	@polish = Polish.find(params[:id])
     @reviews = @polish.reviews
     @review = Review.new
+    @favorited = @polish.favorite_users
+    @wanted = @polish.wanted_users
+    @owned = @polish.owned_users
   end
 
   def new

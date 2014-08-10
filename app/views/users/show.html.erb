@@ -49,3 +49,8 @@
 		</tr>
 	</table>
 <% end %>
+
+<h3>Reviews</h3>
+<%  @reviews.each do |review| %>
+	<p><%= link_to review.title, polish_review_path(@polish, review) %> for <%= link_to "#{review.polish.brand}'s #{review.polish.name}", polish_path(@polish) %></p>
+<% end %>

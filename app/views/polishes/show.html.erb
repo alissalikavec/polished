@@ -12,7 +12,6 @@
 <h3>Polish Reviews</h3>
 <% @reviews.each do |review| %>
 <p><%= link_to review.title, polish_review_path(@polish, review) %></p>
-
 <% end %>
 <% if policy(@review).create? %>
 <%= link_to "Add a Review", new_polish_review_path(@polish), class: 'btn btn-success' %>
@@ -20,3 +19,18 @@
 <%= render partial: 'favorites/favorite', locals: { polish: @polish } %>
 <%= render partial: 'owns/own', locals: { polish: @polish } %>
 <%= render partial: 'wants/want', locals: { polish: @polish } %>
+
+<h3>Favorited by</h3>
+<% @favorited.each do |user| %>
+	<p><%= link_to user.name, user_path(user) %></p>
+<% end %>
+
+<h3>Owned by</h3>
+<% @owned.each do |user| %>
+	<p><%= user.name %></p>
+<% end %>
+
+<h3>Wanted by</h3>
+<% @wanted.each do |user| %>
+	<p><%= user.name %></p>
+<% end %>

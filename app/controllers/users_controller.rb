@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @favorited = @user.favorite_polishes
     @wanted = @user.wanted_polishes
     @owned = @user.owned_polishes
+    @reviews = @user.reviews
    end
  
    def update
