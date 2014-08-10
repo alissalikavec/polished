@@ -1,0 +1,23 @@
+<%= form_for [polish, review] do |f| %>
+  <% if review.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>There are <%= pluralize(review.errors.count, "error") %>.</h4>
+      <ul>
+        <% review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_group_tag(review.errors[:title]) do %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+  <% end %>
+  <%= form_group_tag(review.errors[:body]) do %>
+	<%= f.label :body %>
+	<%= f.text_field :body %>
+  <% end %>
+  <div class="form-group">
+	<%= f.submit "Save" %>
+  </div>
+<% end %>
