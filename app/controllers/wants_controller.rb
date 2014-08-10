@@ -20,7 +20,7 @@ class WantsController < ApplicationController
 
 		authorize want
 
-		if own.destroy
+		if want.destroy
 			flash[:notice] = "Removed from wanted."
 			redirect_to @polish
 		else

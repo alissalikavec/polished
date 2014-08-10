@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
    before_action :authenticate_user!
+
+   def show
+    @user = User.find(params[:id])
+    @polish = Polish.find(params[:id])
+    @favorited = @user.favorite_polishes
+    @wanted = @user.wanted_polishes
+    @owned = @user.owned_polishes
+   end
  
    def update
      if current_user.update_attributes(user_params)

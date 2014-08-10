@@ -1,0 +1,51 @@
+<h1><%= @user.name %></h1>
+<h3>Favorites</h3>
+<% @favorited.each do |polish| %>
+	<table>
+		<tr>
+			<td>
+				<%= link_to "#{polish.brand}'s #{polish.name}", polish_path(polish) %>
+			</td>
+			<td>
+				<%= polish.color %>
+			</td>
+			<td>
+				<%= polish.style %>
+			</td>
+		</tr>
+	</table>
+<% end %>
+
+<h3>Owns</h3>
+<% @owned.each do |polish| %>
+	<table>
+		<tr>
+			<td>
+				<%= link_to "#{polish.brand}'s #{polish.name}", polish_path(polish) %>
+			</td>
+			<td>
+				<%= polish.color %>
+			</td>
+			<td>
+				<%= polish.style %>
+			</td>
+		</tr>
+	</table>
+<% end %>
+
+<h3>Wishlist</h3>
+<% @wanted.each do |polish| %>
+	<table>
+		<tr>
+			<td>
+				<%= link_to "#{polish.brand}'s #{polish.name}", polish_path(polish) %>
+			</td>
+			<td>
+				<%= polish.color %>
+			</td>
+			<td>
+				<%= polish.style %>
+			</td>
+		</tr>
+	</table>
+<% end %>

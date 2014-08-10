@@ -6,8 +6,11 @@ class User < ActiveRecord::Base
   has_many :polishes, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_polishes, through: :favorites, source: :polish
   has_many :owns, dependent: :destroy
+  has_many :owned_polishes, through: :owns, source: :polish
   has_many :wants, dependent: :destroy
+  has_many :wanted_polishes, through: :wants, source: :polish
 
   def role?(base_role)
   	role == base_role.to_s
