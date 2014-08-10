@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   resources :polishes do
   	resources :reviews, except: [:index], controller: 'polishes/reviews'
+  	resources :favorites, only: [:create, :destroy]
   end
   get 'about' => 'welcome#about'
   root 'welcome#index'

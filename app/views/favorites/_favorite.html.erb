@@ -1,0 +1,13 @@
+<% if policy(Favorite.new).create? %>
+	<div class="favorite">
+   		<% if favorite = current_user.favorited(polish) %>
+     		<%= link_to [polish, favorite], class: 'btn btn-danger', method: :delete do %>
+     			Unfavorite
+     		<% end %>
+   			<% else %>
+     		<%= link_to [polish, Favorite.new], class: 'btn btn-primary', method: :post do %>
+     			Favorite
+     		<%end%>
+   		<% end %>
+	</div>
+<% end %>

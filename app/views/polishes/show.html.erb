@@ -12,5 +12,9 @@
 <h3>Polish Reviews</h3>
 <% @reviews.each do |review| %>
 <p><%= link_to review.title, polish_review_path(@polish, review) %></p>
+
 <% end %>
+<% if policy(@review).create? %>
 <%= link_to "Add a Review", new_polish_review_path(@polish), class: 'btn btn-success' %>
+<% end %>
+<%= render partial: 'favorites/favorite', locals: { polish: @polish } %>

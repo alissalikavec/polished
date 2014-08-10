@@ -2,6 +2,7 @@ class Polish < ActiveRecord::Base
 	has_many :reviews, dependent: :destroy
 	belongs_to :user
 	has_many :reviews, dependent: :destroy
+	has_many :favorites, dependent: :destroy
 
 	default_scope {order('created_at DESC')}
 

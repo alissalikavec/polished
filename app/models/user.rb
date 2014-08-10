@@ -3,10 +3,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  has_many :polishes
-  has_many :reviews
+  has_many :polishes, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   def role?(base_role)
   	role == base_role.to_s
+  end
+
+  def favorited(polish)
+  	favorites.where(polish_id: polish.id).first
   end
 end
