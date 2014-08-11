@@ -1,56 +1,91 @@
-<h1><%= @user.name %></h1>
-<h3>Favorites</h3>
-<% @favorited.each do |polish| %>
-	<table>
-		<tr>
-			<td>
-				<%= link_to "#{polish.brand}'s #{polish.name}", polish_path(polish) %>
-			</td>
-			<td>
-				<%= polish.color %>
-			</td>
-			<td>
-				<%= polish.style %>
-			</td>
-		</tr>
-	</table>
-<% end %>
+<div class="container">
+	<h1><%= @user.name %></h1>
+	<h3>Favorites</h3>
+	<% @favorited.each do |polish| %>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nail Polish</th>
+						<th>Color</th>
+						<th>Style</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<%= link_to "#{polish.brand}'s #{polish.name}", polish_path(polish) %>
+						</td>
+						<td>
+							<%= polish.color %>
+						</td>
+						<td>
+							<%= polish.style %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<% end %>
 
-<h3>Owns</h3>
-<% @owned.each do |polish| %>
-	<table>
-		<tr>
-			<td>
-				<%= link_to "#{polish.brand}'s #{polish.name}", polish_path(polish) %>
-			</td>
-			<td>
-				<%= polish.color %>
-			</td>
-			<td>
-				<%= polish.style %>
-			</td>
-		</tr>
-	</table>
-<% end %>
+	<h3>Owns</h3>
+	<% @owned.each do |polish| %>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nail Polish</th>
+						<th>Color</th>
+						<th>Style</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<%= link_to "#{polish.brand}'s #{polish.name}", polish_path(polish) %>
+						</td>
+						<td>
+							<%= polish.color %>
+						</td>
+						<td>
+							<%= polish.style %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<% end %>
 
-<h3>Wishlist</h3>
-<% @wanted.each do |polish| %>
-	<table>
-		<tr>
-			<td>
-				<%= link_to "#{polish.brand}'s #{polish.name}", polish_path(polish) %>
-			</td>
-			<td>
-				<%= polish.color %>
-			</td>
-			<td>
-				<%= polish.style %>
-			</td>
-		</tr>
-	</table>
-<% end %>
+	<h3>Wishlist</h3>
+	<% @wanted.each do |polish| %>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nail Polish</th>
+						<th>Color</th>
+						<th>Style</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<%= link_to "#{polish.brand}'s #{polish.name}", polish_path(polish) %>
+						</td>
+						<td>
+							<%= polish.color %>
+						</td>
+						<td>
+							<%= polish.style %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<% end %>
 
-<h3>Reviews</h3>
-<%  @reviews.each do |review| %>
-	<p><%= link_to review.title, polish_review_path(@polish, review) %> for <%= link_to "#{review.polish.brand}'s #{review.polish.name}", polish_path(@polish) %></p>
-<% end %>
+	<h3>Reviews</h3>
+	<%  @reviews.each do |review| %>
+		<p><%= link_to review.title, polish_review_path(@polish, review) %> for <%= link_to "#{review.polish.brand}'s #{review.polish.name}", polish_path(@polish) %></p>
+	<% end %>
+</div>

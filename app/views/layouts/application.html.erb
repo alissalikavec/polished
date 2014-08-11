@@ -7,21 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li><%= link_to "Home", root_path %></li>
-			<li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Polishes", polishes_path %></li>
-      <li><%= link_to "Profile", user_path(@user)%></li>
-			<div class="pull-right user-info">
-			<% if current_user %>
-			Hello <%= link_to (current_user.name || current_user.email), edit_user_registration_path %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-			<% else %>
-			<%= link_to "Sign In", new_user_session_path %> or
-			<%= link_to "Sign Up", new_user_registration_path %>
-			<% end %>
-		</div>
-		</ul>
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse">
+        <ul class="nav nav-pills">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Polishes", polishes_path %></li>
+          <div class="pull-right user-info">
+            <% if current_user %>
+              Hello <%= link_to (current_user.name || current_user.email), user_path(@user) %>! 
+              <%= link_to edit_user_registration_path do %>
+                <i class="fa fa-cog"></i>
+              <% end %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            <% else %>
+            <%= link_to "Sign In", new_user_session_path %> or
+            <%= link_to "Sign Up", new_user_registration_path %>
+            <% end %>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
 		<% if flash[:notice] %>
          <div class="alert alert-success">
            <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -38,7 +45,11 @@
            <%= flash[:alert] %>
          </div>
        <% end %>
-		<%= yield %>
-	</div>
+	<%= yield %>
+  <div class="footer">
+    <div class="container">
+      <%= link_to ("<i class='fa fa-github-alt fa-2x teal'></i>").html_safe, "https://github.com/alissalikavec/polished" %>
+    </div>
+  </div>
 </body>
 </html>

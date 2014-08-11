@@ -1,17 +1,36 @@
-<h1>All Polishes</h1>
-<% if policy(Polish.new).create? %>
-<%= link_to "New Polish", new_polish_path, class: 'btn btn-success' %>
-<% end %>
-
-<% @polishes.each do |polish| %>
-<div class="media">
-	<div class="media-body">
-		<h4 class="media-heading">
-			<%= link_to polish.name, polish %>
-		</h4>
+<div class="container">
+	<h1>All Polishes
 		<small>
-			submitted <%= time_ago_in_words(polish.created_at) %> ago by <%= polish.user.name %>
+		<% if policy(Polish.new).create? %>
+			<%= link_to ("<i class='fa fa-plus'></i> New Polish").html_safe, new_polish_path, class: 'btn btn-default' %>
+		<% end %>
 		</small>
-	</div>
+	</h1>
+
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nail Polish</th>
+						<th>Color</th>
+						<th>Style</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @polishes.each do |polish| %>
+						<tr>
+							<td>
+							<%= link_to "#{polish.brand}'s #{polish.name}", polish %>
+							</td>
+							<td>
+								<%= polish.color.capitalize %>
+							</td>
+							<td>
+								<%= polish.style %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 </div>
-<% end %>

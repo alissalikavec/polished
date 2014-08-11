@@ -1,12 +1,9 @@
-
-	<div class="want">
-   		<% if want = current_user.wanted(polish) %>
-     		<%= link_to [polish, want], class: 'btn btn-danger', method: :delete do %>
-     			I want this!
+  <% if want = current_user.wanted(polish) %>
+     		<%= link_to [polish, want], class: 'btn btn-default', method: :delete do %>
+     			<i class='fa fa-gift teal'></i> I want this
      		<% end %>
    			<% else %>
-     		<%= link_to [polish, Want.new], class: 'btn btn-primary', method: :post do %>
-     			Do you want this?
+     		<%= link_to [polish, Want.new], class: 'btn btn-default', method: :post do %>
+     			<i class='fa fa-gift'></i> Add to Wishlist
      		<%end%>
-   		<% end %>
-	</div>
+  <% end %>

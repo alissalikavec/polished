@@ -1,12 +1,9 @@
-
-	<div class="own">
-   		<% if own = current_user.owned(polish) %>
-     		<%= link_to [polish, own], class: 'btn btn-danger', method: :delete do %>
-     			I own this!
+  <% if own = current_user.owned(polish) %>
+     		<%= link_to [polish, own], class: 'btn btn-default', method: :delete do %>
+     			<i class='fa fa-check teal'></i> I own this
      		<% end %>
    			<% else %>
-     		<%= link_to [polish, Own.new], class: 'btn btn-primary', method: :post do %>
-     			Do you own this?
+     		<%= link_to [polish, Own.new], class: 'btn btn-default', method: :post do %>
+     			<i class='fa fa-check'></i> Add to Owned
      		<%end%>
-   		<% end %>
-	</div>
+  <% end %>

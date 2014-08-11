@@ -1,8 +1,116 @@
  @import "bootstrap";
+ @import "font-awesome.css";
+ $sea-green: #3BB391;
+
 .user-info {
-	margin-top: 9px;
+	padding: 11px 15px;
+	color: #B5FAD1;
 }
 
-.nav {
-	margin-top: 5px;
+.navbar-default {
+	background: $sea-green;
+	border: none;
+
+	a {
+		color: white;
+	}
+}
+
+.navbar {
+	min-height: inherit;
+	margin-bottom: 0;
+}
+
+.nav > li {
+	font-size: 16px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+	text-decoration: none;
+	background-color: #2A866C; 
+}
+
+label {
+	width: 7%;
+	vertical-align: top;
+
+	/* &:after {
+		content: ':'
+	}
+	*/
+}
+
+.form-group .checkbox {
+	margin-left: 20px;
+	width: 20%;
+}
+
+.jumbotron {
+	margin-top: -20px;
+	height: 400px;
+	background: url(/assets/Red_nail_polish_in_application.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 0%;
+	border-bottom: 5px solid #b33b5d;
+
+	h1, a {
+		color: white;
+	}
+}
+
+.circle {
+	border-radius: 50%;
+	height: 100px;
+	width: 100px;
+	line-height: 120px;
+	text-align: center;
+	color: white;
+	background: $sea-green;
+}
+
+body > .container {
+	margin-top: 20px;
+	background: white;
+	padding: 10px 20px 30px;
+	min-height: 300px;
+
+	&.texture {
+		background: transparent;
+	}
+	
+	> .row {
+		margin-bottom: 25px;
+	}
+}
+
+/* action colors */
+.pink { color: pink }
+.teal { color: $sea-green }
+
+/* sticky footer */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background: url(/assets/crossword.png);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #f5f5f5;
+
+	  .container {
+	  width: auto;
+	  max-width: 680px;
+	  padding: 15px;
+	  text-align: center;
+	}
 }

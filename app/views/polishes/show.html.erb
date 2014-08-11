@@ -1,36 +1,50 @@
-<h1>Polish details</h1>
-<% if policy(@polish).edit? %>
-<%= link_to "Edit Polish", edit_polish_path(@polish), class: 'btn btn-success' %>
-<% end %>
-<% if policy(@polish).destroy? %>
-<%= link_to "Delete Polish", @polish, method: :delete, class: 'btn btn-danger', data: {  confirm: 'Are you sure you want to delete this polish? '} %>
-<%end%>
-<p><%= @polish.brand%> - <%= @polish.name %></p>
-<p>Color: <%= @polish.color %></p>
-<p>Style: <%= @polish.style %> </p>
+<div class="container">
+	<h1><%= @polish.brand %>'s <%= @polish.name %> 
+	<small>
+		<% if current_user %>
+		<%= render partial: 'favorites/favorite', locals: { polish: @polish } %>
+		<%= render partial: 'owns/own', locals: { polish: @polish } %>
+		<%= render partial: 'wants/want', locals: { polish: @polish } %>
+	<% end %>
+	</small>
+	</h1>
+	
+	<p>Color: <%= @polish.color.capitalize %></p>
+	<p>Style: <%= @polish.style %> </p>
 
-<h3>Polish Reviews</h3>
-<% @reviews.each do |review| %>
-<p><%= link_to review.title, polish_review_path(@polish, review) %></p>
-<% end %>
-<% if policy(@review).create? %>
-<%= link_to "Add a Review", new_polish_review_path(@polish), class: 'btn btn-success' %>
-<% end %>
-<%= render partial: 'favorites/favorite', locals: { polish: @polish } %>
-<%= render partial: 'owns/own', locals: { polish: @polish } %>
-<%= render partial: 'wants/want', locals: { polish: @polish } %>
+	<% if policy(@polish).edit? %>
+		<%= link_to ("<i class='fa fa-pencil'></i> Edit Polish").html_safe, edit_polish_path(@polish), class: 'btn btn-default' %>
+	<% end %>
+	<% if policy(@polish).destroy? %>
+		<%= link_to ("<i class='fa fa-trash-o'></i> Delete Polish").html_safe, @polish, method: :delete, class: 'btn btn-default', data: {  confirm: 'Are you sure you want to delete this polish? '} %>
+	<%end%>
 
-<h3>Favorited by</h3>
-<% @favorited.each do |user| %>
-	<p><%= link_to user.name, user_path(user) %></p>
-<% end %>
+	<h3>Polish Reviews</h3>
+	<% @reviews.each do |review| %>
+	<p><%= link_to review.title, polish_review_path(@polish, review) %> by <%= link_to review.user.name, user_path(@user) %></p>
+	<% end %>
+	<% if policy(@review).create? %>
+			<%= link_to ("<i class='fa fa-plus'></i> Add a Review").html_safe, new_polish_review_path(@polish), class: 'btn btn-default' %>
+	<% end %>
 
-<h3>Owned by</h3>
-<% @owned.each do |user| %>
-	<p><%= user.name %></p>
-<% end %>
+	<h3>Favorited by</h3>
+	<% if @favorited.each do |user| %>
+		<p><%= link_to user.name, user_path(user) %></p>
+	<% end.empty? %>
+		No one's here yet!
+	<% end %>
 
-<h3>Wanted by</h3>
-<% @wanted.each do |user| %>
-	<p><%= user.name %></p>
-<% end %>
+	<h3>Owned by</h3>
+	<% if @owned.each do |user| %>
+		<p><%= link_to user.name, user_path(user) %></p>
+	<% end.empty? %>
+		No one's here yet!
+	<% end %>
+
+	<h3>Wanted by</h3>
+	<% if @wanted.each do |user| %>
+		<p><%= link_to user.name, user_path(user) %></p>
+	<% end.empty? %>
+		No one's here yet!
+	<% end %>
+</div>

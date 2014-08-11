@@ -1,4 +1,8 @@
 class Review < ActiveRecord::Base
   belongs_to :polish
   belongs_to :user
+
+  validates :title, presence: true
+  validates :body, presence: true
+
 end
