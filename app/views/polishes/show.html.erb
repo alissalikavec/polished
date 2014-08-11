@@ -21,7 +21,7 @@
 
 	<h3>Polish Reviews</h3>
 	<% @reviews.each do |review| %>
-	<p><%= link_to review.title, polish_review_path(@polish, review) %> by <%= link_to review.user.name, user_path(@user) %></p>
+	<p><%= link_to review.title, polish_review_path(@polish, review) %> by <%= link_to review.user.name, user_path(review.user) %></p>
 	<% end %>
 	<% if policy(@review).create? %>
 			<%= link_to ("<i class='fa fa-plus'></i> Add a Review").html_safe, new_polish_review_path(@polish), class: 'btn btn-default' %>

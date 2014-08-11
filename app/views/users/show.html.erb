@@ -1,7 +1,7 @@
 <div class="container">
 	<h1><%= @user.name %></h1>
 	<h3>Favorites</h3>
-	<% @favorited.each do |polish| %>
+	<% if @favorited.each do |polish| %>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -26,10 +26,12 @@
 				</tbody>
 			</table>
 		</div>
+	<% end.empty? %>
+		No activity
 	<% end %>
 
 	<h3>Owns</h3>
-	<% @owned.each do |polish| %>
+	<% if @owned.each do |polish| %>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -54,10 +56,12 @@
 				</tbody>
 			</table>
 		</div>
+	<% end.empty? %>
+		No activity
 	<% end %>
 
 	<h3>Wishlist</h3>
-	<% @wanted.each do |polish| %>
+	<% if @wanted.each do |polish| %>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
@@ -82,10 +86,14 @@
 				</tbody>
 			</table>
 		</div>
+	<% end.empty? %>
+		No activity
 	<% end %>
 
 	<h3>Reviews</h3>
-	<%  @reviews.each do |review| %>
+	<%  if @reviews.each do |review| %>
 		<p><%= link_to review.title, polish_review_path(@polish, review) %> for <%= link_to "#{review.polish.brand}'s #{review.polish.name}", polish_path(@polish) %></p>
+	<% end.empty? %>
+		No activity
 	<% end %>
 </div>
