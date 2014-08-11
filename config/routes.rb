@@ -8,6 +8,5 @@ Rails.application.routes.draw do
   	resources :wants, only: [:create, :destroy]
   	resources :owns, only: [:create, :destroy]
   end
-  get 'about' => 'welcome#about'
   root 'welcome#index'
 end
