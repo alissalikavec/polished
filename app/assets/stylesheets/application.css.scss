@@ -31,7 +31,6 @@
 }
 
 label {
-	width: 7%;
 	vertical-align: top;
 
 	/* &:after {
@@ -48,7 +47,7 @@ label {
 .jumbotron {
 	margin-top: -20px;
 	height: 400px;
-	background: url(/assets/Red_nail_polish_in_application.jpg);
+	background-image: image_path(/assets/Red_nail_polish_in_application.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 0%;
@@ -97,7 +96,7 @@ html {
 
 body {
   margin-bottom: 60px;
-  background: url(/assets/crossword.png);
+  background-image: image_path(/assets/crossword.png);
 }
 
 .footer {
